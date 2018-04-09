@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "541888422973",
+    "firebase_url": "https://ligtas-baon-5a344.firebaseio.com",
+    "project_id": "ligtas-baon-5a344",
+    "storage_bucket": "ligtas-baon-5a344.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541888422973:android:9e199f0b381a74ee",
+        "android_client_info": {
+          "package_name": "com.example.romhub_ronanlina.ligtasbaonbeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541888422973-9kme4jqsbsuo6qv393u2mhpc0bn4jhv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCJjfrx-iIW_A2e_89D7QMpJMRVAqVaak"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

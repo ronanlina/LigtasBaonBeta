@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Ligtas Baon Beta</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="budget">Budget</string>
+    <string name="location">Current Location</string>
+    <string name="or">- or -</string>
+    <string name="signin">Sign in</string>
+    <string name="signup">Sign Up</string>
+    <string name="title">Ligtas ~ Baon</string>
+
+    <string-array name="barangay">
+        <item>Abella</item>
+        <item>Bagumbayan Norte</item>
+        <item>Bagumbayan Sur</item>
+        <item>Balatas</item>
+        <item>Calauag</item>
+        <item>Cararayan</item>
+        <item>Carolina</item>
+        <item>Concepcion Grande</item>
+        <item>Concepcion Pequeña</item>
+        <item>Dayangdang</item>
+        <item>Del Rosario</item>
+        <item>Dinaga</item>
+        <item>Igualdad</item>
+        <item>Lerma</item>
+        <item>Liboton</item>
+        <item>Mabolo</item>
+        <item>Pacol</item>
+        <item>Panicuason</item>
+        <item>Peñafrancia</item>
+        <item>Sabang</item>
+        <item>San Felipe</item>
+        <item>San Francisco</item>
+        <item>San Isidro</item>
+        <item>Santa Cruz</item>
+        <item>Tabuco</item>
+        <item>Tinago</item>
+        <item>Triangulo</item>
+    </string-array>
+</resources>
