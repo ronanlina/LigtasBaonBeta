@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LogIn"
+            android:screenOrientation="portrait"
             android:theme="@style/LigtasBaonCustom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +24,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".Admin"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_admin"
-            android:theme="@style/FullscreenTheme"></activity>
+        <activity android:name=".Admin" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".Home" />
+        <activity android:name=".AddResto"></activity>
     </application>
 
 </manifest>

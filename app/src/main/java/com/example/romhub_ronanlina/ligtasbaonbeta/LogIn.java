@@ -5,8 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,10 +27,6 @@ public class LogIn extends AppCompatActivity {
     private EditText mEmailText;
     private EditText mPasswordText;
 
-    //member vars
-    private String email;
-    private String password;
-
     //firebase object instances
     private FirebaseAuth mAuth;
 
@@ -40,55 +38,46 @@ public class LogIn extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mSignin = (Button) findViewById(R.id.signinButton);
-        mSignup = (Button) findViewById(R.id.signupButton);
-        mEmailText = (AutoCompleteTextView) findViewById(R.id.emailACText);
+        mSignup = (Button) findViewById(R.id.signUpButton);
+        mEmailText = (EditText) findViewById(R.id.emailACText);
         mPasswordText = (EditText) findViewById(R.id.passwordEditText);
 
-        email = mEmailText.getText().toString();
-        password = mPasswordText.getText().toString();
+        mPasswordText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                if (id == R.integer.login || id == EditorInfo.IME_NULL) {
+                    attemptLogin();
+                    return true;
+                }
+                return false;
+            }
+        });
 
-        //flag variable
-        final boolean adminChecker = isAdmin(email,password);
-
-        //Sign in click
         mSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkInputs(email, password) && !adminChecker){
-                    attemptLogin(adminChecker);
-                }
-                else if(checkInputs(email, password) && adminChecker){
-                    //open add activity
-                    attemptLogin(adminChecker);
-                }
-                else{
-                    //message
-                }
+                attemptLogin();
+            }
+        });
+
+        mSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LogIn.this,SignUp.class);
+                startActivity(intent);
             }
         });
     }
 
-    public boolean checkInputs(String email, String password){
+    // TODO: Complete the attemptLogin() method
+    private void attemptLogin() {
 
-        if(email == null && password == null){ return false; }
+        final String email = mEmailText.getText().toString();
+        String password = mPasswordText.getText().toString();
 
-        return true;
-    }
-
-    public boolean isAdmin(String email, String password){
-
-        if(email.toLowerCase() == "ligtasbaon@gmail.com" && password.toLowerCase() == "password"){
-            return true;
-        }
-
-        return false;
-    }
-
-    private void attemptLogin(final boolean adminChecker){
-
+        if (email.equals("") || password.equals("")) return;
         Toast.makeText(this,"Login in progress...", Toast.LENGTH_SHORT).show();
 
-        // TODO: Use FirebaseAuth to sign in with email & password
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -96,19 +85,13 @@ public class LogIn extends AppCompatActivity {
                 if(!task.isSuccessful()){
                     showErrorDialog("There was a problem signing in.");
                 }
-                else if(task.isSuccessful() && adminChecker){
-                    //open admin activity
-                    Intent intent = new Intent(LogIn.this,Admin.class);
+                else{
+                    Intent intent = new Intent(LogIn.this,Home.class);
+                    intent.putExtra("email",email.toLowerCase());
                     finish();
                     startActivity(intent);
                 }
-                else if(task.isSuccessful() && !adminChecker){
 
-                    //open non admin activity
-                    /*Intent intent = new Intent(LogIn.this,Admin.class);
-                    finish();
-                    startActivity(intent);*/
-                }
             }
         });
 
@@ -116,7 +99,7 @@ public class LogIn extends AppCompatActivity {
 
     private void showErrorDialog(String message) {
         new AlertDialog.Builder(this)
-                .setTitle("Oops")
+                .setTitle("Problem signing in!")
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)

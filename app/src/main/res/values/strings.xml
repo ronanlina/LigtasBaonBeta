@@ -43,4 +43,19 @@
     <string name="title_activity_admin">Admin</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="example_domain_com">example@domain.com</string>
+    <string name="keep_it_a_secret">minimum of 6 characters</string>
+    <string name="create_your_account">Create your account!</string>
+    <string name="createaccount">Create Your Account!</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">Password too short or does not match</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_field_budget">should be 50+ pesos > </string>
+    <string name="hi">Hi!,</string>
+    <string name="find">Find Me Some!</string>
+    <string name="find_">Find</string>
+    <string name="suggest">+ Suggest</string>
+    <string name="tell_us">So, tell us what you know!</string>
+    <string name="ave_price">Average price</string>
 </resources>
